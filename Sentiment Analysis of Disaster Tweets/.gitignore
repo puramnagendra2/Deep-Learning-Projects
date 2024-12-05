@@ -1,0 +1,7 @@
+# Ignore virtual environments
+venv/
+.venv/
+env/
+ENV/
+.env/
+venv.bak/ 
