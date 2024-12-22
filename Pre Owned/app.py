@@ -42,4 +42,4 @@ if st.button("Predict Price"):
     predicted_price = pipeline.predict(user_input)[0]
     
     # Display prediction
-    st.subheader(f"The predicted price of the car is: ${predicted_price:,.2f}")
+    st.subheader(f"The predicted price of the car is: Rs. {predicted_price*84:,.0f}")

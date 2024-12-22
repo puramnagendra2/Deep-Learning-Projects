@@ -1,0 +1,33 @@
+Steps for Execution:
+======================
+
+Step 1:
+    Open the folder in command prompt or VS Code
+Step 2:
+    In the command prompt run 'pip install -r requirements.txt'
+Step 3:
+    After installing:
+        In VS Code =:
+            Click on ... > Terminal > New Terminal > type 'streamlit run app.py'
+        From Command Prompt =:
+            After successful installation of Libraries run 'streamlit run app.py'
+
+Possible Errors while installing libraries:
+============================================
+
+Error 1 =: If you see any error like 
+ 
+ "ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory:
+ HINT: This error might have occurred since this system does not have Windows Long Path support enabled.
+ You can find information on how to enable this at https://pip.pypa.io/warnings/enable-long-paths"
+
+Solution =: 
+    Step 1: Press Win + R to open the Run dialog, type gpedit.msc, and press Enter to open the Group Policy Editor
+    Step 2: Navigate => Local Computer Policy > Computer Configuration > Administrative Templates > System > Filesystem
+    Step 3: Locate the setting Enable Win32 long paths.
+    Step 4: Double-click it, select Enabled, and click OK.
+    Step 5: Restart your computer for the changes to take effect.
+
+In VS Code to run Pre Owned Cars.ipynb:
+========================================
+Go to VS Code Extensions and Search for jupyter notebook and ipykernel
