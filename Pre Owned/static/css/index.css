@@ -1,0 +1,59 @@
+*{
+    font-family: cursive;
+    align-items: center;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px; 
+    margin: auto; 
+    padding: 20px;
+}
+
+img{
+    width: 500px;
+    height: 250px;
+}
+
+input{ 
+    width: 100%; 
+    padding: 10px; 
+    margin: 10px 0;
+    border: 2px solid #007BFF;
+    border-radius: 20px;;
+}
+button { 
+    width: 100%; 
+    padding: 10px; 
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    background-color: #007BFF; 
+    color: white; 
+    border: 2px solid #ffffff; 
+    border-radius: 20px;
+}
+button:hover{
+    background-color: #ffffff;
+    color: #007BFF;
+    border-color: #007BFF;
+}
+
+.condition, .fuel, .title_status, .transmission, .drive, .size, .type{
+    width: 200px;
+    height: 30px;
+    border-radius: 20px;
+    border-color: #007BFF;
+}
+
+#result { 
+    font-size: 1.5em; 
+    color: green; 
+    margin-top: 20px;
+    font-family: cursive;
+    font-weight: bold;
+    border: 3px solid;
+    border-radius: 20px;
+}
+

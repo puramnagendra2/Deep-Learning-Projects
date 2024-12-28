@@ -98,4 +98,6 @@ pipeline.fit(X_train, y_train)
 
 # Save the trained pipeline
 joblib.dump(pipeline, 'price_prediction_pipeline.pkl')
+joblib.dump(pipeline, 'price_prediction_pipeline.h5')
+
 print("Pipeline saved!")
