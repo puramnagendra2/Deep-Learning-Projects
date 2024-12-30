@@ -19,6 +19,10 @@ pad_text_sequences = pickle.load(open("pad_text_sequences.pkl", "rb"))
 
 ###############################################
 
+# Padded Sequence
+def pad_text_sequences(sequences, max_sequence_length, padding, truncating):
+    return sequence.pad_sequences(sequences, maxlen=max_sequence_length, padding=padding, truncating=truncating)
+
 # Predict on new comments
 
 def prediction_model(user_input):

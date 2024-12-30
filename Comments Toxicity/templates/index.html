@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>Comment Toxicity Classification</title>
+</head>
+<body>
+    <img src="{{ url_for('static', filename='images/comments.jpg') }}" alt="Comments Illustration" class="car">
+    <h1>Comment Toxicity Classification</h1>
+    <form id="classification-form">
+        <!-- Input for user comment -->
+        <input type="text" id="comment" placeholder="Enter Your Comment" required>
+        <button type="submit">Classify</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('classification-form').onsubmit = async function (e) {
+            e.preventDefault();
+            
+            // Get the comment from the form
+            const comment = document.getElementById('comment').value;
+            
+            // Send the comment to the Flask API
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify([comment]) // Send comment in a list format
+            });
+
+            // Handle the response
+            const result = await response.json();
+            const resultDiv = document.getElementById('result');
+
+            if (result.error) {
+                // Display error message
+                resultDiv.innerText = `Error: ${result.error}`;
+            } else {
+                // Display classification result
+                resultDiv.innerHTML = `
+                    <p><strong>Comment:</strong> ${comment}</p>
+                    <p><strong>Classification:</strong> ${result.classification}</p>
+                `;
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,2 +1,4 @@
 myenv/
 Datasets/
+*.h5
+*.pkl
