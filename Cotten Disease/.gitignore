@@ -1,0 +1,6 @@
+model/
+venv/
+static/
+train/
+val/
+test/
