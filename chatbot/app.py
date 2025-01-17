@@ -47,7 +47,8 @@ column_name = "question"  # Replace with the column name in your dataset
 if column_name not in df.columns:
     st.error(f"Column '{column_name}' not found in the dataset.")
 else:
-    options = df[column_name].dropna().unique()
+    odd_rows_df = df.iloc[::2]
+    options = odd_rows_df[column_name].dropna().unique()
 
     # Initialize chat history
     if "messages" not in st.session_state:
