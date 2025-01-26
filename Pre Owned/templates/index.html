@@ -1,113 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
     <title>Pre Owned Cars Price Prediction</title>
 </head>
+
 <body>
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="car">
-    <h1>Pre Owned Car Price Prediction</h1>
-    <form id="prediction-form">
+    
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" class="car">
+            <h1>Pre Owned Car Price Prediction</h1>
+        </div>
 
-        <!-- Own Form -->
-        <input type="number" id="year" placeholder="Year Of Manufacturing" required>
-        <input type="number" name="cylinders" id="cylinders" placeholder="Cylinders of the Car" required>
-        <input type="number" name="odometer" id="odometer" placeholder="Odometer Reading" required>
-        
-        <!--Condition-->
-        <b>
-        <label for="">Select Condition</label>
-        <select class="condition" name="condition" id="condition">
-            <option value="like new">Like New</option>
-            <option value="good">Good</option>
-            <option value="excellent">Excellent</option>
-            <option value="fair">Fair</option>
-            <option value="new">New</option>
-            <option value="salvage">Salvage</option>
-        </select>
-        
-        <br>
-        <br>
-        <!--Fuel-->
-        <label for="">Select Fuel</label>
-        <select class="fuel" name="fuel" id="fuel">
-            <option value="gas">Gas</option>
-            <option value="diesel">Diesel</option>
-            <option value="electric">Electric</option>
-            <option value="hybrid">Hybrid</option>
-            <option value="other">Other</option>
-        </select>
+        <!-- Right Section -->
+        <div class="right-section">
+            <form id="prediction-form">
 
-        <br>
-        <br>
-        <!--Title Status-->
-        <label for="">Select Title Status</label>
-        <select class="title_status" name="title_status" id="title_status">
-            <option value="clean">Clean</option>
-            <option value="rebuilt">Rebuilt</option>
-            <option value="salvage">Salvage</option>
-            <option value="lien">Lien</option>
-            <option value="missing">Missing</option>
-            <option value="parts only">Parts Only</option>
-        </select>
+                <!-- Own Form -->
+                <input type="number" id="year" placeholder="Manufacturing Year" required>
+                <input type="number" name="cylinders" id="cylinders" placeholder="Cylinders of the Car" required>
+                <input type="number" name="odometer" id="odometer" placeholder="Odometer Reading" required>
 
-        <br>
-        <br>
-        <!--Transmission-->
-        <label for="">Select Transmission</label>
-        <select class="transmission" name="transmission" id="transmission">
-            <option value="automatic">Automatic</option>
-            <option value="manual">Manual</option>
-            <option value="other">Other</option>
-        </select>
+                <!--Condition-->
+                <b>
+                    <label for="">Select Condition</label>
+                    <select class="condition" name="condition" id="condition">
+                        <option value="like new">Like New</option>
+                        <option value="good">Good</option>
+                        <option value="excellent">Excellent</option>
+                        <option value="fair">Fair</option>
+                        <option value="new">New</option>
+                        <option value="salvage">Salvage</option>
+                    </select>
 
-        <br>
-        <br>
-        <!--Drive-->
-        <label for="">Select Drive</label>
-        <select class="drive" name="drive" id="drive">
-            <option value="4wd">4 Wheel Drive</option>
-            <option value="rwd">Real Wheel Drive</option>
-            <option value="fwd">Front Wheel Drive</option>
-        </select>
+                    <br>
+                    <br>
+                    <!--Fuel-->
+                    <label for="">Select Fuel</label>
+                    <select class="fuel" name="fuel" id="fuel">
+                        <option value="gas">Gas</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="electric">Electric</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="other">Other</option>
+                    </select>
 
-        <br>
-        <br>
-        <!--Size-->
-        <label for="">Select Size</label>
-        <select class="size" name="size" id="size">
-            <option value="full-size">Full Size</option>
-            <option value="mid-size">Mid Size</option>
-            <option value="sub-compact">Sub Compact</option>
-            <option value="compact">Compact</option>
-        </select>
+                    <br>
+                    <br>
+                    <!--Title Status-->
+                    <label for="">Select Title Status</label>
+                    <select class="title_status" name="title_status" id="title_status">
+                        <option value="clean">Clean</option>
+                        <option value="rebuilt">Rebuilt</option>
+                        <option value="salvage">Salvage</option>
+                        <option value="lien">Lien</option>
+                        <option value="missing">Missing</option>
+                        <option value="parts only">Parts Only</option>
+                    </select>
 
-        <br>
-        <br>
-        <!--Type-->
-        <label for="">Select Type</label>
-        <select class="type" name="type" id="type">
-            <option value="offroad">Offroad</option>
-            <option value="sedan">Sedan</option>
-            <option value="pickup">Pick Up</option>
-            <option value="convertible">Convertible</option>
-            <option value="van">Van</option> 
-            <option value="truck">Truck</option>
-            <option value="SUV">SUV</option>
-            <option value="coupe">Coupe</option>
-            <option value="hatchback">Hatch Back</option>
-            <option value="mini-van">Mini Van</option>
-            <option value="wagon">Wagon</option>
-            <option value="bus">Bus</option>
-            <option value="other">Other</option>
-        </select>
-        <!--fuel title_status transmission drive size type-->
-        </b>
-        
-        <button type="submit">Predict Price</button>
-    </form>
+                    <br>
+                    <br>
+                    <!--Transmission-->
+                    <label for="">Select Transmission</label>
+                    <select class="transmission" name="transmission" id="transmission">
+                        <option value="automatic">Automatic</option>
+                        <option value="manual">Manual</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <br>
+                    <br>
+                    <!--Drive-->
+                    <label for="">Select Drive</label>
+                    <select class="drive" name="drive" id="drive">
+                        <option value="4wd">4 Wheel Drive</option>
+                        <option value="rwd">Real Wheel Drive</option>
+                        <option value="fwd">Front Wheel Drive</option>
+                    </select>
+
+                    <br>
+                    <br>
+                    <!--Size-->
+                    <label for="">Select Size</label>
+                    <select class="size" name="size" id="size">
+                        <option value="full-size">Full Size</option>
+                        <option value="mid-size">Mid Size</option>
+                        <option value="sub-compact">Sub Compact</option>
+                        <option value="compact">Compact</option>
+                    </select>
+
+                    <br>
+                    <br>
+                    <!--Type-->
+                    <label for="">Select Type</label>
+                    <select class="type" name="type" id="type">
+                        <option value="offroad">Offroad</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="pickup">Pick Up</option>
+                        <option value="convertible">Convertible</option>
+                        <option value="van">Van</option>
+                        <option value="truck">Truck</option>
+                        <option value="SUV">SUV</option>
+                        <option value="coupe">Coupe</option>
+                        <option value="hatchback">Hatch Back</option>
+                        <option value="mini-van">Mini Van</option>
+                        <option value="wagon">Wagon</option>
+                        <option value="bus">Bus</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <!--fuel title_status transmission drive size type-->
+                </b>
+                <div id="result-section">
+                    <button type="submit">Predict Price</button>
+                    <div id="result"></div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div id="result"></div>
 
     <script>
@@ -141,4 +155,5 @@
         };
     </script>
 </body>
+
 </html>

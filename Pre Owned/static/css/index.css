@@ -1,59 +1,102 @@
-*{
-    font-family: cursive;
+body {
+    font-family: Arial, sans-serif;
+    margin: 100px 100px;
+    padding: 20px 20px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    margin-top: 100px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid #1e70eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.left-section {
+    background-color: #1e70eb;
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    max-width: 600px; 
-    margin: auto; 
-    padding: 20px;
+.left-section h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-img{
-    width: 500px;
-    height: 250px;
+.left-section img {
+    width: 100%;
+    height: auto;
 }
 
-input{ 
-    width: 100%; 
-    padding: 10px; 
-    margin: 10px 0;
-    border: 2px solid #007BFF;
-    border-radius: 20px;;
+.right-section {
+    background-color: #fff;
+    color: #333;
+    padding: 20px 120px 20px ;
+    flex: 1.2;
 }
-button { 
-    width: 100%; 
-    padding: 10px; 
+
+.right-section h3 {
     font-size: 20px;
+    margin-bottom: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form select,
+form textarea,
+form button {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 3px solid #1e70eb;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+}
+
+form button {
+    background-color: #1e70eb;
+    color: #fff;
     font-weight: bold;
-    margin: 10px 0;
-    background-color: #007BFF; 
-    color: white; 
-    border: 2px solid #ffffff; 
-    border-radius: 20px;
-}
-button:hover{
-    background-color: #ffffff;
-    color: #007BFF;
-    border-color: #007BFF;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.condition, .fuel, .title_status, .transmission, .drive, .size, .type{
-    width: 200px;
-    height: 30px;
-    border-radius: 20px;
-    border-color: #007BFF;
+form button:hover {
+    background-color: #fff;
+    color: #1e70eb;
+    border: 2px solid #1e70eb;
 }
 
-#result { 
-    font-size: 1.5em; 
-    color: green; 
+#result-section {
     margin-top: 20px;
-    font-family: cursive;
-    font-weight: bold;
-    border: 3px solid;
-    border-radius: 20px;
+    text-align: center;
 }
 
+#result {
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    color: green;
+}
