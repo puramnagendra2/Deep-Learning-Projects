@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else 'Investology - Projections' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fundamentals.css') }}">
+    <style>
+        .plot-container {
+            justify-content: center;
+            margin: 50px 50px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navigation.html' %}  <!-- Include navigation bar -->
+    {% block content %}
+    <div class="container1">
+        <div class="header1">
+            <h1>{{ company_name }} Projections</h1>
+        </div>
+        <div class="links1">
+            <a href="#">Website: {{ website }}</a>
+            <a href="#">NSE: {{ company_name }}</a>
+        </div>
+        <div class="content1">
+            <div class="info1">
+                <div class="row1">
+                    <div class="col1">
+                        <span class="label1">Current Price</span>
+                        <span class="value1">₹ {{ current_price | round(2)}}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">Last Price</span>
+                        <span class="value1">₹ {{ yesterday_price | round(2) }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">52 Week Low</span>
+                        <span class="value1">₹ {{ year_week_low | round(2) }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">52 Week High</span>
+                        <span class="value1">₹ {{ year_week_high | round(2) }}</span>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col1">
+                        <span class="label1">Today Open</span>
+                        <span class="value1">₹ {{ open | round(2) }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">Today High</span>
+                        <span class="value1">₹ {{ high | round(2) }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">Today Low</span>
+                        <span class="value1">₹ {{ low | round(2) }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">Today Close</span>
+                        <span class="value1">₹ {{ close | round(2) }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="plot-container">
+        <div>{{ plotly_image1 | safe }}</div>
+    </div>
+
+    <div class="plot-container">
+        <div>{{ plotly_image2 | safe }}</div>
+    </div>
+
+    <div class="plot-container">
+        <div>{{ project | safe }}</div>
+    </div>
+    
+    {% endblock %}
+</body>
+</html>

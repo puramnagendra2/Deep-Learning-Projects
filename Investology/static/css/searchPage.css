@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2C2152;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.search-box {
+    margin-top: 20px;
+}
+
+.search-box .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box select, .search-box button {
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    margin-right: 10px;
+}
+
+.choose {
+    width: 500px;
+    padding: 15px 0px;
+}
+
+.search-box button {
+    background-color: #9239F6;
+    color: white;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #7a2dc8;
+}
+
+.disclaimer {
+    font-size: 12px;
+    margin-top: 20px;
+}

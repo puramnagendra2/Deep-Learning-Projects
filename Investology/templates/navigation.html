@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investology - Navigation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navigation.css') }}">
+</head>
+<body>
+    <!-- Search Form (Optional - You can uncomment it if needed) -->
+    <!--
+    <div class="header">
+        <div class="search-container">
+            <form method="POST" action="{{ url_for('navigation') }}">
+                <input type="text" name="cname" placeholder="Search for Company">
+                <button type="submit" name="task" value="search">Search</button>
+            </form>
+        </div>
+    </div>
+    -->
+
+    <!-- Footer Navigation Form -->
+    <div class="footer">
+        <form method="POST" action="{{ url_for('navigation') }}">
+            <button type="submit" name="task" value="home">Home</button>
+            <button type="submit" name="task" value="overview">Overview</button>
+            <button type="submit" name="task" value="financials">Financials</button>
+            <button type="submit" name="task" value="fundamentals">Fundamentals</button>
+            <button type="submit" name="task" value="projections">Projections</button>
+        </form>
+    </div>
+
+    <!-- Content Block for Pages -->
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

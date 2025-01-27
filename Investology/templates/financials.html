@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else "Investology - Financials" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/financials.css') }}">
+    <style>
+        .plot-container {
+            justify-content: center;
+            margin: 50px 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include Navigation -->
+    {% include 'navigation.html' %}
+
+    <!-- Main Content -->
+    <div class="container1">
+        <div class="header1">
+            <h1>{{ company_name }} Financials</h1>
+        </div>
+        <div class="links1">
+            <a href="{{ website }}" target="_blank">Website: {{ website }}</a>
+            <a href="#">NSE: {{ company_name }}</a>
+        </div>
+        <div class="content1">
+            <div class="info1">
+                <div class="row1">
+                    <div class="col1">
+                        <span class="label1">Revenue </span>
+                        <span class="value1">₹ {{ Revenue | human_readable_large_number }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">Gross Profit</span>
+                        <span class="value1">₹ {{ Gross_Profit | human_readable_large_number }}</span>
+                    </div>
+                    <div class="col1">
+                        <span class="label1">Net Income</span>
+                        <span class="value1">₹ {{ Net_Income | human_readable_large_number }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plot Containers -->
+    <div class="plot-container">
+        <div>{{ year_revenue | safe }}</div>
+    </div>
+    <div class="plot-container">
+        <div>{{ quat_plot | safe }}</div>
+    </div>
+</body>
+</html>

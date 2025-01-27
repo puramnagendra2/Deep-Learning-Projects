@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investology - Overview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/overview.css') }}">
+</head>
+<body>
+    {% include 'navigation.html' %}
+
+    <!-- Main Content Block -->
+    <div class="chart-container">
+        <div class="chart-header">
+            <p style="color: black;">
+                <b style="font-size: 30px;"><u>Summary of {{ c_name }}</u></b><br><br>
+                {{ summary }}
+            </p>
+        </div>
+    </div>
+
+    <!-- Card Container for Summary Details -->
+    <div class="card-container" style="left: 7.5; margin-left: 0px;">
+        <div class="card" style="background-color: #4a90e2; color: white; align-items: normal">
+            <h3>Total Employees</h3>
+            <h3>{{ Total_Employees }}</h3>
+        </div>
+        <div class="card" style="background-color: #50e3c2; color: white;">
+            <h4>{{ industry }}</h4>
+            <h4>{{ sector }}</h4>
+        </div>
+        <div class="card" style="background-color: #f5a623; color: white;">
+            <h3>Website</h3>
+            <a href="{{ website }}" target="_blank" style="color: white;">{{ website }}</a>
+        </div>
+    </div>
+
+    <!-- Pie Chart Container -->
+    <div class="pie_chart">
+        <div class="chart-header">{{ pie_chart | safe }}</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+</body>
+</html>
