@@ -28,37 +28,37 @@
                 <div class="row1">
                     <div class="col1">
                         <span class="label1">Current Price</span>
-                        <span class="value1">₹ {{ current_price | round(2)}}</span>
+                        <span class="value1">₹ {{ current_price | rounded_val}}</span>
                     </div>
                     <div class="col1">
                         <span class="label1">Last Price</span>
-                        <span class="value1">₹ {{ yesterday_price | round(2) }}</span>
+                        <span class="value1">₹ {{ yesterday_price | rounded_val }}</span>
                     </div>
                     <div class="col1">
                         <span class="label1">52 Week Low</span>
-                        <span class="value1">₹ {{ year_week_low | round(2) }}</span>
+                        <span class="value1">₹ {{ year_week_low | rounded_val }}</span>
                     </div>
                     <div class="col1">
                         <span class="label1">52 Week High</span>
-                        <span class="value1">₹ {{ year_week_high | round(2) }}</span>
+                        <span class="value1">₹ {{ year_week_high | rounded_val }}</span>
                     </div>
                 </div>
                 <div class="row1">
                     <div class="col1">
                         <span class="label1">Today Open</span>
-                        <span class="value1">₹ {{ open | round(2) }}</span>
+                        <span class="value1">₹ {{ open | rounded_val }}</span>
                     </div>
                     <div class="col1">
                         <span class="label1">Today High</span>
-                        <span class="value1">₹ {{ high | round(2) }}</span>
+                        <span class="value1">₹ {{ high | rounded_val }}</span>
                     </div>
                     <div class="col1">
                         <span class="label1">Today Low</span>
-                        <span class="value1">₹ {{ low | round(2) }}</span>
+                        <span class="value1">₹ {{ low | rounded_val }}</span>
                     </div>
                     <div class="col1">
                         <span class="label1">Today Close</span>
-                        <span class="value1">₹ {{ close | round(2) }}</span>
+                        <span class="value1">₹ {{ close | rounded_val }}</span>
                     </div>
                 </div>
             </div>

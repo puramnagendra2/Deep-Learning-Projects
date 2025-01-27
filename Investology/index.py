@@ -1,5 +1,7 @@
 from flask import Flask, render_template, session, redirect, url_for, request
 import yfinance as yf
+import math
+import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -13,12 +15,28 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Required for session handling
 
 
+# Converting Human Readable Format
 def human_readable_large_number(value):
     try:
         value = float(value) / 1e7
         return f'{value:.2f} Cr'
     except (ValueError, TypeError):
         return value
+
+# Rounding Value   
+def rounded_val(value):
+    if isinstance(value, float):
+        value = round(value, 2) if not math.isnan(value) else 'NA'
+        return value    
+    elif value == None:
+        value = 'NA'
+        return value
+    else:
+        return round(value, 2)
+
+# Register the filter with Jinja2
+app.jinja_env.filters['human_readable_large_number'] = human_readable_large_number
+app.jinja_env.filters['rounded_val'] = rounded_val
     
 def get_mutual_fund_holders(ticker):
     try:
@@ -34,8 +52,6 @@ def get_mutual_fund_holders(ticker):
 
     return mutual_fund_holders
 
-# Register the filter with Jinja2
-app.jinja_env.filters['human_readable_large_number'] = human_readable_large_number
 
 @app.route('/navigation', methods=['GET', 'POST'])
 def navigation():
@@ -346,8 +362,9 @@ def projections():
     info = stock.info
 
     # Calculate the date 30 days ago from today
+    days=120 # Change here
     end_date = pd.Timestamp.today().normalize()
-    start_date = end_date - pd.Timedelta(days=60)
+    start_date = end_date - pd.Timedelta(days=days)
 
     # Fetch historical data
     data = yf.download(cname, start=start_date, end=end_date)
@@ -400,7 +417,7 @@ def projections():
         name='Candlestick'
     ))
     fig1.update_layout(
-        title=f'{cname[:-3]} Candlestick Chart of 3 months',
+        title=f'{cname[:-3]} Candlestick Chart of {days} days',
         xaxis_title='Dates',
         yaxis_title='Prices',
         xaxis_rangeslider_visible=False,
@@ -417,7 +434,7 @@ def projections():
         name='Line Chart'
     ))
     fig2.update_layout(
-        title=f'{cname[:-3]} Line Chart for 3 months',
+        title=f'{cname[:-3]} Line Chart for {days} days',
         xaxis_title='Date',
         yaxis_title='Price',
         xaxis_rangeslider_visible=False,
@@ -426,7 +443,7 @@ def projections():
     plotly_image2 = fig2.to_html(full_html=False)
 
     # Prediction Model Building (assuming functions fetch_and_preprocess, create_sequences, build_model, and predict_stock_prices exist)
-    df = stock.history(period="3mo")
+    df = stock.history(period="3mo") # period can be "1d" "5d" "1mo" "3mo" "6mo" "1y" "2y" "5y" "10y" "ytd" "max"
     df = df.reset_index()
     dates, close_prices, scaled_close_prices, scaler = fetch_and_preprocess(cname)
     sequence_length = 5
@@ -438,14 +455,15 @@ def projections():
     y_train, y_test = y[:split_index], y[split_index:]
     model = build_model(X_train, y_train, sequence_length)
     predicted_prices = predict_stock_prices(model, scaled_close_prices, scaler, sequence_length)
-    dates_predicted = pd.date_range(start=df['Date'].iloc[-1], periods=11)[1:]
+    freq = 10 # Change Here
+    dates_predicted = pd.date_range(start=df['Date'].iloc[-1], periods=freq+1)[1:]
     extended_dates = df['Date'].tolist() + [dates_predicted[0]]
     extended_prices = close_prices.tolist() + [predicted_prices.flatten()[0]]
     fig_pro = go.Figure()
     fig_pro.add_trace(go.Scatter(x=extended_dates, y=extended_prices, mode='lines', name='Original Data'))
     fig_pro.add_trace(go.Scatter(x=dates_predicted, y=predicted_prices.flatten(), mode='lines', name='Projected Data'))
     fig_pro.update_layout(
-        title=f'{cname[:-3]} Stock Prices with Projections for 10 days',
+        title=f'{cname[:-3]} Stock Prices with Projections for {freq} days',
         xaxis_title='Date',
         yaxis_title='Stock Price (Rs)',
         legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.01),
@@ -460,7 +478,7 @@ def projections():
         'current_price': current_price,
         'yesterday_price': yesterday_price,
         'year_week_high': high_52_weeks,
-        'year   _week_low': low_52_weeks,
+        'year_week_low': low_52_weeks,
         'open': open_price,
         'high': high_price,
         'low': low_price,
