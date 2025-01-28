@@ -19,9 +19,9 @@ def pred_cot_dieas(cott_plant):
   print("@@ Got Image for prediction")
    
   test_image = img_to_array(test_image)/255 # convert image to np array and normalize
-  test_image = np.expand_dims(test_image, axis = 0) # change dimention 3D to 4D
+  test_image = np.expand_dims(test_image, axis = 0) # change dimension 3D to 4D
    
-  result = model.predict(test_image).round(3) # predict diseased palnt or not
+  result = model.predict(test_image).round(3) # predict diseased plant or not
   print('@@ Raw result = ', result)
    
   pred = np.argmax(result) # get the index of max value
