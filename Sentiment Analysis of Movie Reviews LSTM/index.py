@@ -1,8 +1,30 @@
+import os
+import logging
+import warnings
+import absl.logging
+
+# Suppress logging and warnings before TensorFlow is imported
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
+absl.logging.set_verbosity(absl.logging.ERROR)
+logging.getLogger('tensorflow').setLevel(logging.ERROR)
+
+warnings.simplefilter(action='ignore', category=UserWarning)
+warnings.simplefilter(action='ignore', category=FutureWarning)
+warnings.simplefilter(action='ignore', category=DeprecationWarning)
+
+import sys
+sys.stderr = open(os.devnull, 'w')
+
 from flask import Flask, render_template, request, jsonify
 import pickle
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+import tensorflow as tf
 
+tf.get_logger().setLevel(logging.ERROR)
+tf.autograph.set_verbosity(0)
 app = Flask(__name__)
 
 # Load the model and tokenizer
@@ -25,24 +47,24 @@ def predict():
     try:
         # Get input data (raw text stored in a list)
         data = request.get_json()
-        print(data)
+        # print(data)
         
         # Extract the input text
         comment = data[0]
-        print(comment)
+        # print(comment)
         if not isinstance(comment, str):
             return jsonify({'error': 'Input must be a string inside the list.'}), 400
 
         # Preprocess the input
         user_sequences = tokenizer.texts_to_sequences([comment])  # Convert to sequence
-        print("User seq: ", user_sequences)
+        # print("User seq: ", user_sequences)
         max_seq_len = 232
         user_padded = pad_sequences(user_sequences, maxlen=max_seq_len, padding='post', truncating='post')
-        print("Padded seq: ", user_padded)
+        # print("Padded seq: ", user_padded)
 
         # Make prediction
         predictions = model.predict(user_padded)
-        print("Predictions:", predictions)
+        # print("Predictions:", predictions)
 
         threshold = 0.5
         classification = "Negative" if predictions[0][0] > threshold else "Positive"
