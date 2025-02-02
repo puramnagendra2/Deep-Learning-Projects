@@ -7,16 +7,24 @@
     <title>Comment Toxicity Classification</title>
 </head>
 <body>
-    <img src="{{ url_for('static', filename='images/comments.jpg') }}" alt="Comments Illustration" class="car">
-    <h1>Comment Toxicity Classification</h1>
+    <button type="button" id="home-button">Home</button>
+    <img src="{{ url_for('static', filename='images/Comments.png') }}" alt="Comments Illustration" class="car">
     <form id="classification-form">
         <!-- Input for user comment -->
         <input type="text" id="comment" placeholder="Enter Your Comment" required>
-        <button type="submit">Classify</button>
+        <div class="button-container"> <!-- Wrap buttons in a container -->
+            <button type="submit">Classify</button>
+            <button type="button" id="clear-button">Clear</button>
+        </div>
     </form>
+    <div id="image"></div>
     <div id="result"></div>
 
     <script>
+        // Redirect to home.html when Home button is clicked
+        document.getElementById('home-button').onclick = function() {
+            window.location.href = "{{ url_for('home') }}"; // Adjust 'home' to your route name
+        };
         // Handle form submission
         document.getElementById('classification-form').onsubmit = async function (e) {
             e.preventDefault();
@@ -34,17 +42,34 @@
             // Handle the response
             const result = await response.json();
             const resultDiv = document.getElementById('result');
+            const imageDiv = document.getElementById('image');
 
             if (result.error) {
                 // Display error message
                 resultDiv.innerText = `Error: ${result.error}`;
             } else {
                 // Display classification result
+                // <p><strong>Review:</strong> ${comment}</p>
                 resultDiv.innerHTML = `
-                    <p><strong>Comment:</strong> ${comment}</p>
-                    <p><strong>Classification:</strong> ${result.classification}</p>
+                    <p>${result.classification}<strong> Review</strong> </p>
                 `;
+                // Set the appropriate image based on classification
+                let imgSrc;
+                if (result.classification === 'toxic') {
+                    imgSrc = 'static/images/thumbsdown.png'; // Path to negative image
+                } else {
+                    imgSrc = 'static/images/thumbsup.jpeg'; // Path to positive image
+                }
+
+                // Update the image display
+                imageDiv.innerHTML = `<img src="${imgSrc}" alt="${result.classification} image" style="width: 200px; height: 200px;">`;
             }
+        };
+         // Clear button functionality
+        document.getElementById('clear-button').onclick = function () {
+        document.getElementById('comment').value = ''; // Clear the input field
+        document.getElementById('result').innerHTML = ''; // Clear previous results
+        document.getElementById('image').innerHTML = '';
         };
     </script>
 </body>
