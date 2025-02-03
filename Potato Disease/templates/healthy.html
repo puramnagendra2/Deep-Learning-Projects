@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+      integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+    <title>Late Blight</title>
+  </head>
+
+  <body>
+    <button type="button" id="home-button" class="home">
+      <span class="material-symbols-outlined">arrow_back</span>
+  </button>
+    <div class="container my-2">
+      <div class="row mb-5">
+        <div class="col-sm" style="margin-bottom: 23px">
+          <span class="border border-primary">
+            <img
+              src="{{ user_image }}"
+              alt="User Image"
+              class="img-thumbnail"
+            />
+            <!-- <img src="{{pred_output}}" alt="User Image" class="img-thumbnail"> -->
+          </span>
+        </div>
+        <div class="col-sm">
+          <div>
+            <h1
+              style="
+                padding: 15px;
+                background-color: rgb(153, 156, 150);
+                color: white;
+              "
+              class="text-center mb-5 content-h1 rounded"
+            >
+              Healthy Leaf
+            </h1>
+          </div>
+          <div>
+            <p>Keep monitoring the healthy leaves for preventing from disease.</p>
+            <br>
+          </div>
+
+          <hr class="w-100 mx-auto" />
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById('home-button').onclick = function() {
+        window.location.href = "{{ url_for('home') }}"; // Adjust 'home' to your route name
+      };
+    </script>
+  </body>
+</html>

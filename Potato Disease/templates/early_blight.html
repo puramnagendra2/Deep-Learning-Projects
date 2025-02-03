@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+      integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+    <title>Early Blight</title>
+  </head>
+
+  <body>
+    <button type="button" id="home-button" class="home">
+      <span class="material-symbols-outlined">arrow_back</span>
+  </button>
+    <div class="container my-2">
+      <div class="row mb-5">
+        <div class="col-sm" style="margin-bottom: 23px">
+          <span class="border border-primary">
+            <img
+              src="{{ user_image }}"
+              alt="User Image"
+              class="img-thumbnail"
+            />
+            <!-- <img src="{{pred_output}}" alt="User Image" class="img-thumbnail"> -->
+          </span>
+        </div>
+        <div class="col-sm">
+          <div>
+            <h1
+              style="
+                padding: 15px;
+                background-color: rgb(153, 156, 150);
+                color: white;
+              "
+              class="text-center mb-5 content-h1 rounded"
+            >
+              Early Blight
+            </h1>
+          </div>
+          <div>
+            <p><b>Early Blight </b>a fungal disease that affects potato plants, 
+                causing dark brown spots on leaves and stems. It's also known as target spot. </p>
+            <br>
+            <p><b>Symptoms</b></p>
+            <ul>
+                <li>Circular or angular dark brown spots on leaves and stems</li>
+                <li>Concentric rings in the spots, giving a target-board effect</li>
+                <li>Yellowing and dropping of severely infected leaves</li>
+                <li>Dark, corky, dry rot in infected tubers</li>
+            </ul>
+            <br>
+            <p><b>Measures </b></p>
+            <ul>
+                <li> Ensure proper fertilization, irrigation, and pest management.</li>
+                <li>Check plants at random, especially the lower leaves.</li>
+                <li>Remove up to one-third of the plant's leaves, and bury or burn them.</li>
+                <li>Use fabric, straw, plastic mulch, or dried leaves.</li>
+                <li>Use drip irrigation, a soaker hose, or hand watering.</li>
+                <li>Stake or trellis plants, remove weeds, and space plants apart.</li>
+                <li>Grow varieties that have a longer season.</li>
+            </ul>
+          </div>
+
+          <hr class="w-100 mx-auto" />
+        </div>
+      </div>
+
+      <h1>Solution for Diseases</h1>
+    </div>
+
+    <section>
+      <div class="container">
+        <h1
+          style="
+            padding: 15px;
+            background-color: rgb(153, 156, 150);
+            color: white;
+          "
+          class="text-center my-3 content-h1"
+        >
+          Recommended Products
+        </h1>
+      </div>
+
+      <div class="container">
+        <div class="card-columns">
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/fluopyram.png"
+                alt=""
+              />
+            </div>
+            <h3>Fluopyram</h3>
+            <p>A systemic fungicide that protects potatoes from early blight and other foliar fungal diseases.</p>
+          </div>
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/chlorothalonil.png"
+                alt=""
+              />
+            </div>
+            <h3>Chlorothalonil</h3>
+            <p>A contact fungicide that can be applied as a foliar spray.</p>
+          </div>
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/hexaconazole.png"
+                alt=""
+              />
+            </div>
+            <h3>Hexaconazole</h3>
+            <p>A systemic fungicide that can be used in combination with other fungicides.</p>
+          </div>
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/difenoconazole.png"
+                alt=""
+              />
+            </div>
+            <h3>Difenoconazole</h3>
+            <p>A systemic fungicide that can be used in combination with other fungicides.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.getElementById('home-button').onclick = function() {
+        window.location.href = "{{ url_for('home') }}"; // Adjust 'home' to your route name
+      };
+    </script>
+  </body>
+</html>
