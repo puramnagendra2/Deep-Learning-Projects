@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
+      integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+    <title>Early Blight</title>
+  </head>
+
+  <body>
+    <button type="button" id="home-button" class="home">
+      <span class="material-symbols-outlined">arrow_back</span>
+  </button>
+    <div class="container my-2">
+      <div class="row mb-5">
+        <div class="col-sm" style="margin-bottom: 23px">
+          <span class="border border-primary">
+            <img
+              src="{{ user_image }}"
+              alt="User Image"
+              class="img-thumbnail"
+            />
+            <!-- <img src="{{pred_output}}" alt="User Image" class="img-thumbnail"> -->
+          </span>
+        </div>
+        <div class="col-sm">
+          <div>
+            <h1
+              style="
+                padding: 15px;
+                background-color: rgb(153, 156, 150);
+                color: white;
+              "
+              class="text-center mb-5 content-h1 rounded"
+            >
+            Bacterial Spot
+            </h1>
+          </div>
+          <div>
+            <p><b>Bacterial Spot </b> is a common disease that causes significant damage to leaves, stems, and fruit.
+              It is caused by bacteria of the genus Xanthomonas, and can be particularly devastating in warm, humid conditions.</p>
+            <br>
+            <p><b>Symptoms</b></p>
+            <ul>
+                <li>Small, water-soaked spots appear on the leaves, which soon turn dark brown or black.
+                  These spots may be surrounded by a yellow halo. In severe cases, the spots may merge, causing the leaves to wither and die.</li>
+                <li>Dark brown or black lesions may develop on the stems.</li>
+                <li>Small, raised spots appear on the fruit, which may become sunken and scabby as they develop.</li>
+            </ul>
+            <br>
+          </div>
+
+          <hr class="w-100 mx-auto" />
+        </div>
+      </div>
+
+      <h1>Solution for Diseases</h1>
+    </div>
+
+    <section>
+      <div class="container">
+        <h1
+          style="
+            padding: 15px;
+            background-color: rgb(153, 156, 150);
+            color: white;
+          "
+          class="text-center my-3 content-h1"
+        >
+          Recommended Products
+        </h1>
+      </div>
+
+      <div class="container">
+        <div class="card-columns">
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/hydroxide.png"
+                alt=""
+              />
+            </div>
+            <h3>Copper Hydroxide</h3>
+            </div>
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/mancozeb.png"
+                alt=""
+              />
+            </div>
+            <h3>Mancozeb</h3>
+          </div>
+          <div class="card">
+            <div class="card-body text-center card-style">
+              <img
+                style="border-radius: 10px"
+                class="img-fluid"
+                src="/static/fungicides/actigard.png"
+                alt=""
+              />
+            </div>
+            <h3>Actigard</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.getElementById('home-button').onclick = function() {
+        window.location.href = "{{ url_for('home') }}"; // Adjust 'home' to your route name
+      };
+    </script>
+  </body>
+</html>
